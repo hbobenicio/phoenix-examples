@@ -1,15 +1,17 @@
 defmodule GuardianAuthenticationWeb.Auth.Controllers.AuthController do
   use GuardianAuthenticationWeb, :controller
   alias GuardianAuthenticationWeb.Auth.Guardian
+  alias GuardianAuthentication.User.Business.UserBC
+
+  # TODO add fallback_controller
 
   # POST /auth
   def auth(conn, %{"identifier" => identifier, "password" => password} = _params) do
-    # Search the user by identifier and password. If it finds, generate a token for it
-    if identifier == "foo" && password == "1234" do
-      # gerar token, set cookie, reponse 200
+
+    if UserBC.exists?(identifier, password) do
 
       # encode a token for a resource
-      {:ok, token, claims} = Guardian.encode_and_sign(identifier)
+      {:ok, token, _claims} = Guardian.encode_and_sign(identifier)
 
       conn
       |> put_resp_cookie("token", token, domain: "localhost", max_age: 60)
