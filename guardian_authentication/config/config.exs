@@ -9,9 +9,14 @@ use Mix.Config
 config :guardian_authentication, GuardianAuthenticationWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "+E8DklombDgtaUjExZpQhUArZW59zc1S6PC81UZo8OwPZzpIkJJ+MFUvjxW1gAXq",
-  render_errors: [view: GuardianAuthenticationWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: GuardianAuthentication.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  render_errors: [
+    view: GuardianAuthenticationWeb.ErrorView,
+    accepts: ~w(json)
+  ],
+  pubsub: [
+    name: GuardianAuthentication.PubSub,
+    adapter: Phoenix.PubSub.PG2
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,

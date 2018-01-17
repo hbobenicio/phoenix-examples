@@ -7,5 +7,7 @@ defmodule GuardianAuthenticationWeb.Router do
 
   scope "/api", GuardianAuthenticationWeb do
     pipe_through :api
+
+    post "/auth", Auth.Controllers.AuthController, :auth
   end
 end
