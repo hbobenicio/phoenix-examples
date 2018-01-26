@@ -14,8 +14,13 @@ defmodule GuardianAuthenticationWeb.Auth.Controllers.AuthController do
       {:ok, token, _claims} = Guardian.encode_and_sign(identifier)
 
       conn
-      |> put_resp_cookie("token", token, domain: "localhost", max_age: 60)
-      |> send_resp(:ok, "") # :ok = status code "200"
+
+      # Responding as a Web Cookie
+      #|> put_resp_cookie("token", token, domain: "localhost", max_age: 60)
+
+      # Responding as a Bearer Header
+      |> put_resp_header("Authorization", "Bearer " <> token)
+      |> send_resp(:ok, "")
     else
       conn
       |> send_resp(:forbidden, "") # :forbidden = status code "403"
