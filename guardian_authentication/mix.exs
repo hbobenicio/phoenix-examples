@@ -36,7 +36,10 @@ defmodule GuardianAuthentication.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+
+      # Distillery - Release Build Tool
+      {:distillery, "~> 1.5", runtime: false}
     ]
   end
 end

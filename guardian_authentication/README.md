@@ -27,5 +27,8 @@
   {:ok, claims} = Token.decode_and_verify(token)
   {:ok, resource, claims} = Token.resource_from_token(token)
   ```
+- I've configured the Release Build pipeline as documented in: `https://blog.dockbit.com/deploying-elixir-applications-with-docker-1e1dd5b39ab9`
+  - Added Distillery dependency
+	- `mix release.init`
 - I've added Plugs on the API Pipeline to secure the routes with token based authentication
   - `TODO`
