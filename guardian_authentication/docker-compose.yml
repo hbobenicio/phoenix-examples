@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  phoenix:
+    build:
+      context: ./docker/phoenix
+    image: 'phoenix:1.6.0'
+    user: '1372329340'
+  app:
+    image: 'phoenix:1.6.0'
+    depends_on:
+      - phoenix
+    ports:
+      - '4000:4000'
+    command: ['mix', 'phoenix.server']
+    environment:
+      - MIX_ENV=dev
+      - PORT=4000
+    user: '1372329340'
