@@ -12,6 +12,7 @@ defmodule GuardianAuthenticationWeb.Auth.Controllers.AuthController do
 
       # encode a token for a resource
       {:ok, token, _claims} = Guardian.encode_and_sign(identifier)
+      # Maybe `Guardian.sign_in(identifier)` could also be used here...
 
       conn
 
