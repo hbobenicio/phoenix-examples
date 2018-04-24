@@ -2,7 +2,7 @@
 
 ## Want to benchmark this?
 
-`ab -p data.json -T application/json -c 10 -n 2000 http://localhost:4000/api/auth`
+`ab -p login.data.json -T application/json -c 100 -n 50000 http://localhost:4000/api/auth`
 
 ## Want to build it?
 
@@ -12,6 +12,20 @@ MIX_ENV=prod mix phx.release
 ```
 
 ## Want to run it?
+
+Running as Debug: Foreground process + No IEx Session
+
+```bash
+mix phx.server
+```
+
+Running as Debug: Foreground process + IEx Session
+
+```bash
+iex -S mix phx.server
+```
+
+Running as Production Release
 
 ```bash
 PORT=8088 _build/prod/rel/guardian_authentication/bin/guardian_authentication foreground
