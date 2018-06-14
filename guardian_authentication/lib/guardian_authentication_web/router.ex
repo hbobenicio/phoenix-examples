@@ -5,7 +5,7 @@ defmodule GuardianAuthenticationWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # Setup the Guardian Pipeline
+  # Setup the pipeline to require a token
   pipeline :guardian_secured_api do
 
     # Plug our Guardian Module and ErrorHandler auth errors response handling

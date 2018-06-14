@@ -9,7 +9,13 @@ defmodule GuardianAuthenticationWeb.Auth.Guardian do
     # is a poor subject.
     # sub = to_string(resource.id)
     # {:ok, sub}
-    {:ok, resource}
+
+    # In this case, we're using the identifier as the resource
+    # to generate the token. It's also our subject.
+    identifier = resource
+    subject = identifier
+
+    {:ok, subject}
   end
 
   def subject_for_token(_, _) do
@@ -20,10 +26,16 @@ defmodule GuardianAuthenticationWeb.Auth.Guardian do
     # Here we'll look up our resource from the claims, the subject can be
     # found in the `"sub"` key. In `above subject_for_token/2` we returned
     # the resource id so here we'll rely on that to look it up.
-    id = claims["sub"]
+    identifier = claims["sub"]
+
     # resource = MyApp.get_resource_by_id(id)
+    # In this case, our resource is just the subject, which hold the
+    # identifier itself
+    #
+    # user = UserBC.find_by_id(identifier)
+
     # {:ok,  resource}
-    {:ok, id}
+    {:ok, identifier}
   end
 
   def resource_from_claims(_claims) do

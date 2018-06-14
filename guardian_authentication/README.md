@@ -7,8 +7,8 @@
 ## Want to build it?
 
 ```bash
-MIX_ENV=prod mix phx.digest
-MIX_ENV=prod mix phx.release
+# MIX_ENV=prod mix phx.digest
+MIX_ENV=prod mix release
 ```
 
 ## Want to run it?
