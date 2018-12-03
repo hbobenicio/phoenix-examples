@@ -1,18 +1,12 @@
 version: '3.1'
 services:
-  phoenix:
+  guardian_authentication:
     build:
-      context: ./docker/phoenix
-    image: 'phoenix:1.6.0'
-    user: '1372329340'
-  app:
-    image: 'phoenix:1.6.0'
-    depends_on:
-      - phoenix
+      context: .
+    image: 'guardian_authentication:0.0.1'
     ports:
-      - '4000:4000'
-    command: ['mix', 'phoenix.server']
+      - '8000:8000'
     environment:
-      - MIX_ENV=dev
-      - PORT=4000
-    user: '1372329340'
+      - MIX_ENV=prod # precisa?
+      - PORT=8000 # precisa?
+
